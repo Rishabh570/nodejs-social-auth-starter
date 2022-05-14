@@ -1,0 +1,17 @@
+diff --git a/node_modules/oauth/lib/oauth2.js b/node_modules/oauth/lib/oauth2.js
+index 77241c4..4a6923a 100644
+--- a/node_modules/oauth/lib/oauth2.js
++++ b/node_modules/oauth/lib/oauth2.js
+@@ -158,8 +158,10 @@ exports.OAuth2.prototype._executeRequest= function( http_library, options, post_
+     });
+   });
+   request.on('error', function(e) {
+-    callbackCalled= true;
+-    callback(e);
++    if (!callbackCalled) {
++      callbackCalled= true;
++      callback(e);
++    }
+   });
+ 
+   if( (options.method == 'POST' || options.method == 'PUT') && post_body ) {
