@@ -5,7 +5,6 @@
  const GitHubStrategy = require('passport-github2').Strategy;
  
  const User = require('@models/user');
- const { default: mongoose } = require('mongoose');
  const config = require('@config');
  
  passport.use(new GitHubStrategy({
@@ -27,7 +26,6 @@
           { 'github.email': email },
         ]
       });
-      console.log('user with email: ', user);
       
       if (req.user) {
         if (!req.user.github || (!req.user.github.email && !req.user.github.accessToken && !req.user.github.profileId)) {
@@ -37,14 +35,11 @@
           * 2. there's no existing account with github login's email
           * 3. github login's email is present in req.user's object for any provider (indicates true ownership)
           */
-         console.log('req.user._id: ', req.user._id);
-         console.log('user: ', user._id);
           if(!user || (user && user._id.toString() == req.user._id.toString())) {
-            console.log("github sync processing...");
             await User.findOneAndUpdate({ '_id': req.user._id }, { $set: { github: { email: email, profileId: profile.id, accessToken }, connectedSocialAccounts: (req.user.connectedSocialAccounts + 1) }});
             return done(null, req.user);
           }
-          console.log("cannot sync github account, other account with github login's email already exists");
+          // cannot sync github account, other account with github login's email already exists
         }
         return done(null, req.user);
       } else {
@@ -54,7 +49,6 @@
         const newUser = await User.create({
           name: profile.displayName,
           connectedSocialAccount: 1,
-          otherAccounts: [],
           github: {
             accessToken,
             profileId: profile.id,

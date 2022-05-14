@@ -1,22 +1,20 @@
 import React, { Component } from "react";
+import { Row, Col, Typography } from "antd";
+
 import "antd/dist/antd.css";
-import { Layout, Row, Col, Typography, Button } from "antd";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+
 import { fetchUser } from "../../api/user";
-import Profile from "../Profile";
 
 const { Title } = Typography;
 
 export default class Home extends Component {
   async componentDidMount() {
     const user = await fetchUser();
-    console.log('[CDM] user: ', user);
     this.props.storeUserState(user);
   }
 
   render() {
     const { user } = this.props;
-    console.log('user: ', user);
 
     return (
       <>
@@ -82,19 +80,6 @@ export default class Home extends Component {
               </a>
             </Col>
           }
-          {/* {
-            user && user.facebook && user.connectedSocialAccounts > 1 &&
-            <Col style={{ margin: '0 5px 5px' }}>
-              <a href="/api/auth/facebook/disconnect">
-                <div class="facebook-btn">
-                  <div class="facebook-icon-wrapper">
-                    <img class="facebook-icon" src="facebook-brand-logo.svg"/>
-                  </div>
-                  <p class="btn-text"><b>Disconnect Facebook</b></p>
-                </div>
-              </a>
-            </Col>
-          } */}
         </Row>
 
         <Row
@@ -144,19 +129,6 @@ export default class Home extends Component {
               </a>
             </Col>
           }
-          {/* {
-            user && !user.facebook &&
-            <Col style={{ margin: '0 5px 5px' }}>
-              <a href="/api/auth/facebook">
-                <div class="facebook-btn">
-                  <div class="facebook-icon-wrapper">
-                    <img class="facebook-icon" src="facebook-brand-logo.svg"/>
-                  </div>
-                  <p class="btn-text"><b>Connect Facebook</b></p>
-                </div>
-              </a>
-            </Col>
-          } */}
         </Row>
       </>
     )

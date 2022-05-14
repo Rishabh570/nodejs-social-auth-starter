@@ -15,9 +15,6 @@ export default class Home extends Component {
           <Col span={24}>
             <Title level={1}>Welcome to the dashboard 👋</Title>
             <p>This dashboard supports OAuth 2.0 login using multiple social providers, with the ability to link social accounts to allow signing in using any of them.</p>
-            <p>
-              It also support multiple user accounts against the same social provider. So you can have two separate logged in accounts both using a different Google account. Just like how Gmail supports multiple logged-in accounts at once.
-            </p>
           </Col>
         </Row>
         <Row>
@@ -62,16 +59,6 @@ export default class Home extends Component {
               </div>
             </a>
           </Col>
-          {/* <Col style={{ margin: '0 5px 5px' }}>
-            <a href={`${API_URL}/api/auth/facebook`}>
-              <div class="facebook-btn">
-                <div class="facebook-icon-wrapper">
-                  <img class="facebook-icon" src="facebook-brand-logo.svg"/>
-                </div>
-                <p class="btn-text"><b>Sign in with Facebook</b></p>
-              </div>
-            </a>
-          </Col> */}
         </Row>
       </>
     )

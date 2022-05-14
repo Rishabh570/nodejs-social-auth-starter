@@ -89,18 +89,6 @@ export default class App extends Component {
                     Logout
                   </Button>
                 }
-                {/* {
-                  isAuthenticated &&
-                    <Popover
-                      className="profile"
-                      placement="bottomRight"
-                      content={<Profile storeUserState={this.storeUserState} user={this.state.user} />}
-                      trigger="hover"
-                    >
-                      <img src="profile-logo.png" />
-                      
-                    </Popover>
-                } */}
               </Col>
             </Row>
           </Header>

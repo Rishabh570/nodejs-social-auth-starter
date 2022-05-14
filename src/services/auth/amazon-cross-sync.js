@@ -25,7 +25,6 @@
           { 'github.email': email },
         ]
       });
-      console.log('user with email: ', user);
       
       if (req.user) {
         if (!req.user.amazon || (!req.user.amazon.email && !req.user.amazon.accessToken && !req.user.amazon.profileId)) {
@@ -36,11 +35,10 @@
           * 3. amazon login's email is present in req.user's object for any provider (indicates true ownership)
           */
           if(!user || (user && user._id.toString() === req.user._id.toString())) {
-            console.log("amazon sync processing...");
             await User.findOneAndUpdate({ '_id': req.user._id }, { $set: { amazon: { email: email, profileId: profile.id, accessToken }, connectedSocialAccounts: (req.user.connectedSocialAccounts + 1) }});
             return done(null, req.user);
           }
-          console.log("cannot sync amazon account, other account with amazon login's email already exists");
+          // cannot sync amazon account, other account with amazon login's email already exists
         }
         return done(null, req.user);
       } else {
@@ -50,7 +48,6 @@
         const newUser = await User.create({
           name: profile.displayName,
           connectedSocialAccount: 1,
-          otherAccounts: [],
           amazon: {
             accessToken,
             profileId: profile.id,
