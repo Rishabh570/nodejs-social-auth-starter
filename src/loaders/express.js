@@ -11,19 +11,19 @@ const { cookieName } = require('../config');
 
 module.exports = {
   run: ({ app, db, mongoSessionStore }) => {
-    passport.serializeUser(function(user, done) {
-      process.nextTick(function () {
-        done(null, user._id);
-      });
-    });
-    passport.deserializeUser(function(id, done) {
-      process.nextTick(function () {
-        User.findById(id, function(err, user){
-            if(!err) done(null, user);
-            else done(err, null);
-          });
-      });
-    });
+    // passport.serializeUser(function(user, done) {
+    //   process.nextTick(function () {
+    //     done(null, user._id);
+    //   });
+    // });
+    // passport.deserializeUser(function(id, done) {
+    //   process.nextTick(function () {
+    //     User.findById(id, function(err, user){
+    //         if(!err) done(null, user);
+    //         else done(err, null);
+    //       });
+    //   });
+    // });
     
     // Set static files folder
     app.use(express.static(path.join(__dirname, '../../public')));
@@ -35,22 +35,22 @@ module.exports = {
     
     app.use(cors());
 
-    app.use(expressSession({
-      name: cookieName,
-      secret: 'keyboard cat',
-      resave: false,
-      saveUninitialized: false,
-      unset: 'destroy',
-      cookie: {
-        httpOnly: false,
-        maxAge: 300000, // 5 min
-      },
-      store: mongoSessionStore
-    }));
+    // app.use(expressSession({
+    //   name: cookieName,
+    //   secret: 'keyboard cat',
+    //   resave: false,
+    //   saveUninitialized: false,
+    //   unset: 'destroy',
+    //   cookie: {
+    //     httpOnly: false,
+    //     maxAge: 300000, // 5 min
+    //   },
+    //   store: mongoSessionStore
+    // }));
 
     // Enable passport authentication, session and plug strategies
-    app.use(passport.initialize());
-    app.use(passport.session());
+    // app.use(passport.initialize());
+    // app.use(passport.session());
 
     // Load API routes
     app.use(config.api.prefix, routes);
