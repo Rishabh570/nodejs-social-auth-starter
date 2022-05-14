@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import { Layout, Row, Col, Typography, Popover, Button } from "antd";
+import { Layout, Row, Col, Typography, Button } from "antd";
 import { Link } from "react-router-dom";
 import { Router } from './router';
 
-// import Profile from './components/Profile';
 import { API_URL, COOKIE_NAME } from './config';
-
+import { globalSignOutHandler } from "./api/auth";
 import { getCookie } from './utils/common';
 
 import "antd/dist/antd.css";
 import './App.css';
-import { globalSignOutHandler } from "./api/auth";
 
 const { Content, Header } = Layout;
 const { Title } = Typography;
@@ -89,18 +87,6 @@ export default class App extends Component {
                     Logout
                   </Button>
                 }
-                {/* {
-                  isAuthenticated &&
-                    <Popover
-                      className="profile"
-                      placement="bottomRight"
-                      content={<Profile storeUserState={this.storeUserState} user={this.state.user} />}
-                      trigger="hover"
-                    >
-                      <img src="profile-logo.png" />
-                      
-                    </Popover>
-                } */}
               </Col>
             </Row>
           </Header>

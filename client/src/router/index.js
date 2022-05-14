@@ -38,7 +38,7 @@ const Router = (props) => {
             }}
           >
             There is nothing on this page 😥 <br />
-            Go back to <a href="/">sacred timeline</a>.
+            Go to <a href="/">Home</a>.
           </Title>
         }
       />
