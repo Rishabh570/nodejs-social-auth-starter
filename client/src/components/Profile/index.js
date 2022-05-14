@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { Row, Col, Button } from "antd";
 
+import "antd/dist/antd.css";
+
 import { fetchUser } from "../../api/user";
 import { globalSignOutHandler } from "../../api/auth";
-
-import "antd/dist/antd.css";
 import { API_URL } from "../../config";
 
 export default class Profile extends Component {
   async componentDidMount() {
     const user = await fetchUser();
-    console.log('[CDM] user: ', user);
     this.props.storeUserState(user);
   }
 
@@ -28,7 +27,7 @@ export default class Profile extends Component {
           <Col span={24} style={{ borderBottom: '1px solid lightgray' }}>
             <p style={{ overflow: 'scroll', fontSize: '11px' }}>
               Signed in as <br/>
-              <strong>{(user && user.google && user.google.email) || (user && user.name)}</strong>
+              <strong>{(user && user.email) || (user && user.name)}</strong>
             </p>
           </Col>
         </Row>

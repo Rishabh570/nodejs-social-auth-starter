@@ -14,9 +14,9 @@ export default class Home extends Component {
         <Row style={{ marginBottom: '32px' }}>
           <Col span={24}>
             <Title level={1}>Welcome to the dashboard 👋</Title>
-            <p>This dashboard supports OAuth 2.0 login using multiple social providers, with the ability to link social accounts to allow signing in using any of them.</p>
+            <p>This dashboard supports OAuth 2.0 Authorization so you can sign-in using your Google account(s).</p>
             <p>
-              It also support multiple user accounts against the same social provider. So you can have two separate logged in accounts both using a different Google account. Just like how Gmail supports multiple logged-in accounts at once.
+              It also supports multiple logged-in user accounts, just like Gmail. You can switch between your accounts without having to login every time.
             </p>
           </Col>
         </Row>
@@ -42,36 +42,6 @@ export default class Home extends Component {
               </div>
             </a>
           </Col>
-          <Col style={{ margin: '0 5px 5px' }}>
-            <a href={`${API_URL}/api/auth/amazon`}>
-              <div class="google-btn">
-                <div class="google-icon-wrapper">
-                  <img class="google-icon" src="amazon-brand-logo.png"/>
-                </div>
-                <p class="btn-text"><b>Sign in with Amazon</b></p>
-              </div>
-            </a>
-          </Col>
-          <Col style={{ margin: '0 5px 5px' }}>
-            <a href={`${API_URL}/api/auth/github`}>
-              <div class="github-btn">
-                <div class="github-icon-wrapper">
-                  <img class="github-icon" src="github-brand-logo.png"/>
-                </div>
-                <p class="btn-text"><b>Sign in with Github</b></p>
-              </div>
-            </a>
-          </Col>
-          {/* <Col style={{ margin: '0 5px 5px' }}>
-            <a href={`${API_URL}/api/auth/facebook`}>
-              <div class="facebook-btn">
-                <div class="facebook-icon-wrapper">
-                  <img class="facebook-icon" src="facebook-brand-logo.svg"/>
-                </div>
-                <p class="btn-text"><b>Sign in with Facebook</b></p>
-              </div>
-            </a>
-          </Col> */}
         </Row>
       </>
     )

@@ -1,6 +1,5 @@
 const mongooseLoader = require('./mongoose');
 const expressLoader = require('./express');
-const passportLoader = require('./passport');
 const sessionStore = require('./sessionStore');
 
 module.exports = {
@@ -12,7 +11,5 @@ module.exports = {
   
     await expressLoader.run({ app: expressApp, db, mongoSessionStore });
     console.log('✌️ Express loaded');
-
-    passportLoader.run();
   }
 }
